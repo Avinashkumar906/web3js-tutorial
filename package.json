@@ -1,0 +1,31 @@
+{
+  "name": "web3js-tutorial",
+  "version": "1.0.0",
+  "description": "web3js tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avinashkumar906/web3js-tutorial.git"
+  },
+  "author": "Avinash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Avinashkumar906/web3js-tutorial/issues"
+  },
+  "homepage": "https://github.com/Avinashkumar906/web3js-tutorial#readme",
+  "dependencies": {
+    "@solana/web3.js": "^1.91.1",
+    "bigint-buffer": "^1.1.5",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
