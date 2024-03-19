@@ -20,7 +20,7 @@
             })
             .then(response => {
                 document.getElementById('popupHeading').innerText = 'Transfer Success'
-                document.getElementById('popupMessage').innerText = `Transaction id ${response.data || ''}`;
+                document.getElementById('popupMessage').innerText = `#Hash-${response.data || ''}`;
                 hideLoader();
                 showPopup()
             })
