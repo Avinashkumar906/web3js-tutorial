@@ -38,4 +38,4 @@ app.post('/airdrop', (req, res) => {
 })
 
 
-app.listen(3000, () => console.log('App is spinned up!'))
+app.listen(process.env.PORT || 3000, () => console.log(`App is running @ ${process.env.PORT || 3000}`))
