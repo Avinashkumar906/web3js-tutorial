@@ -33,23 +33,9 @@ app.post('/airdrop', (req, res) => {
         })
         .catch((errorObject) => {
             console.log("Error=> ", errorObject)
-            res.status(429).send({ data: errorObject, type: 'error' })
+            res.status(400).send({ data: errorObject, type: 'error' })
         });
-    // res.send(req.body);
 })
 
-// airdrop 
-app.get('/depricated/:address/:lamports', (req, res) => {
-    const wallet = new Keypair()
-    const publicKey = new PublicKey(wallet._keypair.publicKey)
-    const secretKey = wallet._keypair.secretKey
-    const connection = new Connection(clusterApiUrl('testnet'), 'confirmed')
-    const fromAirDropSignature = connection.requestAirdrop(publicKey, .5 * LAMPORTS_PER_SOL)
-        .then((connection) => {
-            console.log(connection)
-            res.send({ success: 'success', connection })
-        })
-        .catch(console.log)
-})
 
 app.listen(3000, () => console.log('App is spinned up!'))
