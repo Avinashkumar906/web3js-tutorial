@@ -1,23 +1,57 @@
+<div>
+    Made with ❤️ by <a href="https://www.linkedin.com/in/avinashkumar906/" target="_blank">@Avinash</a>
+    Copyright © 2024 Sol Faucet.
+</div>
 <script>
     document.getElementById('airdropForm').addEventListener('submit', function (event) {
+        showLoader();
         event.preventDefault(); // Prevent the form from submitting normally
         const req = {};
         req.publickey = event.target.elements.publickey.value;
         req.lamport = event.target.elements.lamport.value;
         req.environment = event.target.elements.environment.checked ? 'devnet' : 'testnet';
-        const url = 'http://localhost:3000/airdrop';
+        const url = window.location.href + 'airdrop';
         // Make the API call using fetch
         fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(req) })
             .then(response => {
                 if (!response.ok)
-                    throw new Error('Network response was not ok');
+                    throw new Error('Please try after some time.');
                 return response.json();
             })
-            .then(data => {
-                console.log(data)
+            .then(response => {
+                document.getElementById('popupHeading').innerText = 'Transfer Success'
+                document.getElementById('popupMessage').innerText = `Transaction id ${response.data || ''}`;
+                hideLoader();
+                showPopup()
             })
             .catch(error => {
                 console.log(error);
+                document.getElementById('popupHeading').innerText = "Transfer Failed"
+                document.getElementById('popupMessage').innerText = `${error || ''}`;
+                hideLoader();
+                showPopup()
             });
     });
+    // Function to display the popup
+    function showPopup() {
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Show the popup when the page loads (for demonstration purposes)
+    window.onload = function () {
+        // showPopup();
+    }
+
+    function showLoader() {
+        document.getElementById("loader-wrapper").style.display = "flex";
+    }
+
+    function hideLoader() {
+        document.getElementById("loader-wrapper").style.display = "none";
+    }
 </script>
